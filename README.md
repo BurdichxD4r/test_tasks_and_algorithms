@@ -60,13 +60,13 @@ The last project completed to the end
 
 ### plug-ins / libraries / frameworks
 - [**`Django 4.1.1`**](https://pypi.org/project/Django/)
-    1. Routing
-    2. Data models
-    3. Migrations
-    4. Controllers
-    5. HTML template engines
-    6. ORM
-    7. OOP
+    - Routing
+    - Data models
+    - Migrations
+    - Controllers
+    - HTML template engines
+    - ORM
+    - OOP
 
 ### Stack
 - User (admin panel, registration, authorization, personal account)
