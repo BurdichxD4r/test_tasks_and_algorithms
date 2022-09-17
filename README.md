@@ -38,7 +38,7 @@ The last project completed to the end
     - [**`aiogram 2.22.1`**](https://pypi.org/project/aiogram/)
     - [**`pyTelegramBotAPI 4.7.0`**](https://pypi.org/project/pyTelegramBotAPI/)
 3. [***discord***](https://discord.com)
-    - [**`discord.py 2.0.1`**](https://discord.com)
+    - [**`discord.py 2.0.1`**](https://pypi.org/project/discord.py/)
 
 ### Stack
 - API, synchronicity/asynchrony, OOP
