@@ -3,8 +3,19 @@ from requests import get
 import time
 import random
 
-def connecting_to_the_page(url_page):
 
+def limits(start, stop, user_number):
+    if start <= user_number <= stop:
+        return user_number
+    else:
+        print('[Error] Введенно некорректное значение!\n\tПовторите попытку!')
+        return False
+
+
+def connecting_to_the_page(url_page):
+    print('\n\n\n\n' + '\033[1m' + 'Сколько страниц просмотреть?' + '\033[0m', 'от 1 до 20')
+
+    how_many_pages_to_view = limits(1, 20, int(input()))
     count = 1
     performances = []
 
@@ -13,7 +24,7 @@ def connecting_to_the_page(url_page):
 
     print('Loading ...')
 
-    while count <= 1:
+    while count <= how_many_pages_to_view:
         print(f'Проверка страницы №{count}')
         url = url_page + '?page=' + str(count)
         html_soup = BeautifulSoup(get(url).text, 'html.parser')

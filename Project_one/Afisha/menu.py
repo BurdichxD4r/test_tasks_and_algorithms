@@ -8,7 +8,7 @@ def scraping_menu():
     Основное меню осуществляющее навигацию в приложении
     '''
 
-    print('\033[1m' + 'Меню навигации:' + '\033[0m' + '''
+    print('\n\n\n\n' + '\033[1m' + 'Меню навигации:' + '\033[0m' + '''
   1. Выбор категории
   2. Выход
 ''')
@@ -27,14 +27,15 @@ def pattern_menu(start=1, stop=1, dict=None):
 
     while True:
         user_number = int(input())
-        if start <= user_number <= stop and type(dict[user_number]) == type(pattern_menu):
+        if limits(start, stop, user_number) and hasattr(dict[user_number], '__call__'):
             dict[user_number]()
-        elif start <= user_number <= stop:
+        elif limits(start, stop, user_number):
             connecting_to_the_page(dict[user_number])
             time.sleep(5)
             exit_to_the_menu()
         else:
-            print('[Error] Введенно некорректное значение!\n\tПовторите попытку!')
+            continue
+
 
 
 def url_page():
@@ -67,6 +68,13 @@ def exit_():
     print('Всего хорошего!')
     exit()
 
+
+def limits(start, stop, user_number):
+    if start <= user_number <= stop:
+        return user_number
+    else:
+        print('[Error] Введенно некорректное значение!\n\tПовторите попытку!')
+        return False
 
 
 
