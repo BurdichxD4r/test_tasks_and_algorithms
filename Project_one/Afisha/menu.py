@@ -69,6 +69,7 @@ def exit_():
 
 
 
+
 scraping_menu_dict = {
     1: url_page,
     2: exit_
