@@ -9,7 +9,7 @@ def scraping_menu():
     Основное меню осуществляющее навигацию в приложении
     '''
 
-    print('\033[1m' + 'Меню навигации:' + '\033[0m''''
+    print('\033[1m' + 'Меню навигации:' + '\033[0m' + '''
   1. Выбор категории
   2. Выход
 ''')
@@ -19,23 +19,27 @@ def scraping_menu():
         2: exit
     }
 
-    pattern_menu(0, function=scraping_menu, function_dict=menu_dict)
+    pattern_menu(1, 2, function=scraping_menu, dict=menu_dict)
 
 
-def pattern_menu(type, start=0, stop=1, exit=2, function=None, function_dict=None):
+def pattern_menu(start=1, stop=1, function=None, dict=None):
+    '''
+    Функция отвечающая за навигацию
+
+    :param start: Начальный выбор в меню (всегда 1)
+    :param stop: Последний пункт меню
+    :param function: Функция которая выполница после выбора определённого пункта
+    :param function_dict: Словарь с пунктами
+    '''
+
     while True:
         user_number = int(input())
-        if start < user_number <= stop and type == 0:
-            function(function_dict[user_number]())
+        if start <= user_number <= stop and type(dict[user_number]) == type(pattern_menu):
+            function(dict[user_number]())
+        elif start <= user_number <= stop:
+            function(dict[user_number])
             time.sleep(5)
-            scraping_menu()
-        elif start < user_number <= stop:
-            function(function_dict[user_number])
-            time.sleep(5)
-            scraping_menu()
-        elif user_number == exit:
-            print('Всего хорошего!')
-            break
+            exit_to_the_menu()
         else:
             print('[Error] Введенно некорректное значение!\n\tПовторите попытку!')
 
@@ -50,7 +54,7 @@ def url_page():
   4. Спектакли с высоким рейтингом
   5. Спектакли с известными актёрами
   6. Мюзиклы
-  7. Выход из приложения
+  7. В главное меню
     ''')
 
     performances_dict = {
@@ -59,10 +63,31 @@ def url_page():
         3: 'https://afisha.yandex.ru/saint-petersburg/selections/concert-pop',
         4: 'https://afisha.yandex.ru/saint-petersburg/selections/highrated-plays',
         5: 'https://afisha.yandex.ru/saint-petersburg/selections/famous-actors',
-        6: 'https://afisha.yandex.ru/saint-petersburg/selections/theatre-musical'
+        6: 'https://afisha.yandex.ru/saint-petersburg/selections/theatre-musical',
+        7: scraping_menu
     }
 
-    pattern_menu(1, 0, 6, 7, connecting_to_the_page, performances_dict)
+    pattern_menu(1, 7, None, connecting_to_the_page, performances_dict)
+
+
+def exit_to_the_menu():
+    print('\n\n\n\n' + '\033[1m' + 'Что дальше?' + '\033[0m' + '''
+  1. В главное меню
+  2. Выбор категорий
+  3. Выход
+''')
+
+    menu_dict = {
+        1: scraping_menu,
+        2: url_page,
+        3: exit
+    }
+
+    pattern_menu(1, 3, function=exit_to_the_menu, dict=menu_dict)
+
+
+def exit():
+    print('Всего хорошего!')
 
 
 def connecting_to_the_page(url_page):
@@ -75,7 +100,7 @@ def connecting_to_the_page(url_page):
 
     print('Loading ...')
 
-    while count <= 5:
+    while count <= 1:
         print(f'Проверка страницы №{count}')
         url = url_page + '?page=' + str(count)
         html_soup = BeautifulSoup(get(url).text, 'html.parser')
@@ -88,7 +113,7 @@ def connecting_to_the_page(url_page):
         performances_data = html_soup.find_all('div', class_="event events-list__item yandex-sans")
         if len(performances_data) != 0:
             performances.extend(performances_data)
-            time.sleep(random.randint(1, 3) * 1.5)
+            time.sleep(random.randint(1, 3) * 1.1)
         else:
             print(__info)
             break
