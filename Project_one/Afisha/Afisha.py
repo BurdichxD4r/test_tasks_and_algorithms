@@ -27,7 +27,8 @@ def url_page():
         user_number = int(input())
         if 0 < user_number <= 6:
             connecting_to_the_page(performances_dict[user_number])
-            break
+            time.sleep(5)
+            url_page()
         elif user_number == 7:
             break
         else:
@@ -43,7 +44,10 @@ def connecting_to_the_page(url_page):
     __info = "[INFO] На данной странице, нет ни одного доступного спектакля"
     __error = '[ERROR] Некорректно введена ссылка на страницу!'
 
-    while count <= 1:
+    print('Loading ...')
+
+    while count <= 5:
+        print(f'Проверка страницы №{count}')
         url = url_page + '?page=' + str(count)
         html_soup = BeautifulSoup(get(url).text, 'html.parser')
         check = html_soup.find_all('div', class_="page-content")
@@ -60,6 +64,7 @@ def connecting_to_the_page(url_page):
             print(__info)
             break
         count += 1
+    print('')
     parsing(performances)
 
 def parsing(performances):
