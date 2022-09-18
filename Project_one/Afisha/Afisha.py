@@ -4,7 +4,44 @@ import time
 import random
 
 
+def scraping_menu():
+    '''
+    Основное меню осуществляющее навигацию в приложении
+    '''
+
+    print('\033[1m' + 'Меню навигации:' + '\033[0m''''
+  1. Выбор категории
+  2. Выход
+''')
+
+    menu_dict = {
+        1: url_page,
+        2: exit
+    }
+
+    pattern_menu(0, function=scraping_menu, function_dict=menu_dict)
+
+
+def pattern_menu(type, start=0, stop=1, exit=2, function=None, function_dict=None):
+    while True:
+        user_number = int(input())
+        if start < user_number <= stop and type == 0:
+            function(function_dict[user_number]())
+            time.sleep(5)
+            scraping_menu()
+        elif start < user_number <= stop:
+            function(function_dict[user_number])
+            time.sleep(5)
+            scraping_menu()
+        elif user_number == exit:
+            print('Всего хорошего!')
+            break
+        else:
+            print('[Error] Введенно некорректное значение!\n\tПовторите попытку!')
+
+
 def url_page():
+
     print('''
 Какую категорию выбирите:
   1. Самые ожидаемые концерты
@@ -15,6 +52,7 @@ def url_page():
   6. Мюзиклы
   7. Выход из приложения
     ''')
+
     performances_dict = {
         1: 'https://afisha.yandex.ru/saint-petersburg/selections/concert-hot',
         2: 'https://afisha.yandex.ru/saint-petersburg/selections/standup',
@@ -23,17 +61,8 @@ def url_page():
         5: 'https://afisha.yandex.ru/saint-petersburg/selections/famous-actors',
         6: 'https://afisha.yandex.ru/saint-petersburg/selections/theatre-musical'
     }
-    while True:
-        user_number = int(input())
-        if 0 < user_number <= 6:
-            connecting_to_the_page(performances_dict[user_number])
-            time.sleep(5)
-            url_page()
-        elif user_number == 7:
-            break
-        else:
-            print('[Error] Введенно некорректное значение!\n\tПовторите попытку!')
 
+    pattern_menu(1, 0, 6, 7, connecting_to_the_page, performances_dict)
 
 
 def connecting_to_the_page(url_page):
@@ -89,4 +118,4 @@ def demonstration(name_data, price_data, date_data):
     for n in range(len(name_data)):
         print(name_data[n], price_data[n], date_data[n])
 
-url_page()
+scraping_menu()
