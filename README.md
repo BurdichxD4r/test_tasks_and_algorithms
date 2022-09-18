@@ -18,10 +18,15 @@
 - JSON, HTML/CSS code, semantics, DOM model
 
 
+`Project in development`
+- [Afisha](https://github.com/BurdichxD4r/test_tasks_and_algorithms/blob/main/Project_one/Afisha/Afisha.py)
+
 ```
 The last project completed to the end
 ...
 ```
+
+
 
 
 <br><br>
@@ -45,6 +50,8 @@ The last project completed to the end
 - databases, file systems
 - application logic, deployment
 
+
+`Project in development`
 
 ```
 The last project completed to the end
@@ -76,6 +83,8 @@ The last project completed to the end
 - MVC, HTML/CSS, JavaScript
 
 
+`Project in development`
+
 ```
 The last project completed to the end
 ...
@@ -98,6 +107,8 @@ The last project completed to the end
 - Dialog boxes
 - File systems
 
+
+`Project in development`
 
 ```
 The last project completed to the end
@@ -123,6 +134,8 @@ The last project completed to the end
 5. [**`corenlp-python 3.4.1-1`**](https://pypi.org/project/corenlp-python/)
 1. [**`OpenCV`**](https://docs.opencv.org/3.4/d6/d00/tutorial_py_root.html)
 
+
+`Project in development`
 
 ```
 The last project completed to the end
