@@ -3,7 +3,6 @@ from requests import get
 import time
 import random
 
-
 def scraping_menu():
     '''
     Основное меню осуществляющее навигацию в приложении
@@ -14,30 +13,24 @@ def scraping_menu():
   2. Выход
 ''')
 
-    menu_dict = {
-        1: url_page,
-        2: exit
-    }
-
-    pattern_menu(1, 2, function=scraping_menu, dict=menu_dict)
+    pattern_menu(1, 2, dict=scraping_menu_dict)
 
 
-def pattern_menu(start=1, stop=1, function=None, dict=None):
+def pattern_menu(start=1, stop=1, dict=None):
     '''
     Функция отвечающая за навигацию
 
     :param start: Начальный выбор в меню (всегда 1)
     :param stop: Последний пункт меню
-    :param function: Функция которая выполница после выбора определённого пункта
-    :param function_dict: Словарь с пунктами
+    :param dict: Словарь с пунктами
     '''
 
     while True:
         user_number = int(input())
         if start <= user_number <= stop and type(dict[user_number]) == type(pattern_menu):
-            function(dict[user_number]())
+            dict[user_number]()
         elif start <= user_number <= stop:
-            function(dict[user_number])
+            connecting_to_the_page(dict[user_number])
             time.sleep(5)
             exit_to_the_menu()
         else:
@@ -57,17 +50,7 @@ def url_page():
   7. В главное меню
     ''')
 
-    performances_dict = {
-        1: 'https://afisha.yandex.ru/saint-petersburg/selections/concert-hot',
-        2: 'https://afisha.yandex.ru/saint-petersburg/selections/standup',
-        3: 'https://afisha.yandex.ru/saint-petersburg/selections/concert-pop',
-        4: 'https://afisha.yandex.ru/saint-petersburg/selections/highrated-plays',
-        5: 'https://afisha.yandex.ru/saint-petersburg/selections/famous-actors',
-        6: 'https://afisha.yandex.ru/saint-petersburg/selections/theatre-musical',
-        7: scraping_menu
-    }
-
-    pattern_menu(1, 7, None, connecting_to_the_page, performances_dict)
+    pattern_menu(1, 7, performances_dict)
 
 
 def exit_to_the_menu():
@@ -77,17 +60,12 @@ def exit_to_the_menu():
   3. Выход
 ''')
 
-    menu_dict = {
-        1: scraping_menu,
-        2: url_page,
-        3: exit
-    }
-
-    pattern_menu(1, 3, function=exit_to_the_menu, dict=menu_dict)
+    pattern_menu(1, 3, dict=exit_to_the_menu_dict)
 
 
-def exit():
+def exit_():
     print('Всего хорошего!')
+    exit()
 
 
 def connecting_to_the_page(url_page):
@@ -142,5 +120,28 @@ def parsing(performances):
 def demonstration(name_data, price_data, date_data):
     for n in range(len(name_data)):
         print(name_data[n], price_data[n], date_data[n])
+
+
+scraping_menu_dict = {
+    1: url_page,
+    2: exit_
+}
+
+performances_dict = {
+    1: 'https://afisha.yandex.ru/saint-petersburg/selections/concert-hot',
+    2: 'https://afisha.yandex.ru/saint-petersburg/selections/standup',
+    3: 'https://afisha.yandex.ru/saint-petersburg/selections/concert-pop',
+    4: 'https://afisha.yandex.ru/saint-petersburg/selections/highrated-plays',
+    5: 'https://afisha.yandex.ru/saint-petersburg/selections/famous-actors',
+    6: 'https://afisha.yandex.ru/saint-petersburg/selections/theatre-musical',
+    7: scraping_menu
+}
+
+exit_to_the_menu_dict = {
+        1: scraping_menu,
+        2: url_page,
+        3: exit_
+    }
+
 
 scraping_menu()
