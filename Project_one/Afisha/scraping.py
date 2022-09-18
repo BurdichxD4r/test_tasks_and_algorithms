@@ -1,15 +1,8 @@
 from bs4 import BeautifulSoup
 from requests import get
+from scrips import limits
 import time
 import random
-
-
-def limits(start, stop, user_number):
-    if start <= user_number <= stop:
-        return user_number
-    else:
-        print('[ERROR] Введенно некорректное значение!\n\tПовторите попытку!')
-        return 0
 
 
 def connecting_to_the_page(url_page):

@@ -1,4 +1,5 @@
 from scraping import connecting_to_the_page, parsing, demonstration
+from scrips import limits
 import time
 import random
 
@@ -27,9 +28,10 @@ def pattern_menu(start=1, stop=1, dict=None):
 
     while True:
         user_number = int(input())
-        if limits(start, stop, user_number) and hasattr(dict[user_number], '__call__'):
+        limit = limits(start, stop, user_number)
+        if limit != 0 and hasattr(dict[user_number], '__call__'):
             dict[user_number]()
-        elif limits(start, stop, user_number):
+        elif limit != 0:
             connecting_to_the_page(dict[user_number])
             time.sleep(5)
             exit_to_the_menu()
@@ -67,14 +69,6 @@ def exit_to_the_menu():
 def exit_():
     print('Всего хорошего!')
     exit()
-
-
-def limits(start, stop, user_number):
-    if start <= user_number <= stop:
-        return user_number
-    else:
-        print('[Error] Введенно некорректное значение!\n\tПовторите попытку!')
-        return False
 
 
 
