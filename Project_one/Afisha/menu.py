@@ -1,10 +1,10 @@
 from scraping import connecting_to_the_page, parsing, demonstration
-from scrips import limits
+from scrips import limits, get_key
 import time
 import random
 
 
-def scraping_menu():
+def scraping_menu(page_performances_dict):
     '''
     Основное меню осуществляющее навигацию в приложении
     '''
@@ -71,6 +71,21 @@ def exit_():
     exit()
 
 
+def check_page():
+    page_performances_dict = {}
+    for key, value in performances_dict.items():
+        count = 1
+        check = [0]
+        while len(check) != 0:
+            url = value + '?page=' + str(count)
+            html_soup = BeautifulSoup(get(url).text, 'html.parser')
+            check = html_soup.find_all('div', class_="page-content")
+            time.sleep(random.randint(2, 3) * random.uniform(1, 3))
+            count += 1
+        page_performances_dict[key] = count
+    return page_performances_dict
+
+
 
 scraping_menu_dict = {
     1: url_page,
@@ -92,6 +107,9 @@ exit_to_the_menu_dict = {
         2: url_page,
         3: exit_
     }
+
+page_performances_dict = check_page()
+
 
 
 scraping_menu()
