@@ -1,5 +1,16 @@
 # Алгоритмы и структуры данных
 
+## Оглавление:
+1. [Простейшие алгоритмы *(Leson_1)*][Leson_1]
+2. [Алгебра логики *(Leson_2)*][Leson_2]
+   - [Составные высказывания][Compound statements]
+   - [Таблица истинности][Truth table]
+   - [Дизъюнктивная нормальная форма][Disjunctive normal form]
+   - [Законы истиности][The Laws of truth]
+
+
+<br><br><br><br><br><br><br>
+
 ## Простейшие алгоритмы *(Leson_1)*
 1. **Обмен значениями переменных**
     ```python
@@ -60,7 +71,7 @@
 5. Эквиваленция `A ⟷ B`
 6. XOR (исключающее или) `A ⊕ B`
 
-### Таблица истиности
+### Таблица истинности
 | ***x*** | ***y*** | x * y | x + y | x ⊕ y | x ⟶ y | x = y | x ≠ y |
 |:-------:|:-------:|:-----:|:-----:|:-----:|:-----:|:-----:|:-----:|
 | ***0*** | ***0*** |   0   |   0   |   0   |   1   |   1   |   0   |
@@ -113,3 +124,13 @@
 ##
 
 
+
+
+
+
+[Leson_1]: https://github.com/BurdichxD4r/test_tasks_and_algorithms/blob/main/algorithms/README.md#простейшие-алгоритмы-leson_1
+[Leson_2]: https://github.com/BurdichxD4r/test_tasks_and_algorithms/blob/main/algorithms/README.md#алгебра-логики-leson_2
+[Compound statements]: https://github.com/BurdichxD4r/test_tasks_and_algorithms/blob/main/algorithms/README.md#составные-высказывания
+[Truth table]: https://github.com/BurdichxD4r/test_tasks_and_algorithms/blob/main/algorithms/README.md#таблица-истиности
+[Disjunctive normal form]: https://github.com/BurdichxD4r/test_tasks_and_algorithms/blob/main/algorithms/README.md#дизъюнктивная-нормальная-форма
+[The Laws of truth]: https://github.com/BurdichxD4r/test_tasks_and_algorithms/blob/main/algorithms/README.md#законы-истиности
