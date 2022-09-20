@@ -7,6 +7,10 @@
    - [Таблица истинности][Truth table]
    - [Дизъюнктивная нормальная форма][Disjunctive normal form]
    - [Законы истиности][The Laws of truth]
+3. [Системы счисления *(Leson_3)*][Leson_3]
+   - [Схема Горнара][Gornar Scheme]
+   - [Обозначения в Python][Notation in Python]
+   - [Однопроходные алгоритмы][Single - pass algorithms]
 
 
 <br><br><br><br><br><br><br>
@@ -121,7 +125,98 @@
 9. Закон отрицания<br>
    `¬¬x = x`
 
-##
+## Системы счисления (Leson_3)
+| 2-ая | 4-ая | 8-ая | 10-ая | 16-ая |
+|:----:|:----:|:----:|:-----:|:-----:|
+| 0000 |  00  |  00  |  01   |   0   |
+| 0001 |  01  |  01  |  02   |   1   |
+| 0010 |  02  |  02  |  03   |   2   |
+| 0011 |  03  |  03  |  04   |   3   |
+| 0100 |  10  |  04  |  05   |   4   |
+| 0101 |  11  |  05  |  06   |   5   |
+| 0110 |  12  |  06  |  07   |   6   |
+| 0111 |  13  |  07  |  08   |   7   |
+| 1000 |  20  |  10  |  09   |   8   |
+| 1001 |  21  |  11  |  10   |   9   |
+| 1010 |  22  |  12  |  11   |   A   |
+| 1011 |  23  |  13  |  12   |   B   |
+| 1100 |  30  |  14  |  13   |   C   |
+| 1101 |  31  |  15  |  14   |   D   |
+| 1110 |  32  |  16  |  15   |   E   |
+| 1111 |  33  |  17  |  16   |   F   |
+
+
+### Схема Горнара для систем счисления
+```
+1234₅
+1₅ = 1
+12₅ = 10₅ + 2 = 1 * 5 + 2
+123₅ = 120₅ + 3 = (1 * 5 + 2) * 5 + 3
+1234₅ = 1230₅ + 4 = ((1 * 5 + 2) * 5 + 3) * 5 + 4
+```
+Схема позволяет вычислять число двигаясь слева на право
+
+### Обозначения в Python
+```python
+x = 0b1111 # binary (двоичная)
+y = 0o4567 # octal (восьмеричная)
+z = 0x89AB # hexadecimal (шестнадцатеричная)
+a = int('Z3F9', base=36) # заданная система исчисления (max == 36)
+b = 127
+bin(b) # функция возвращает строку соответствующую двоичной записи числа
+oct(b) # функция возвращает строку соответствующую восьмеричной записи числа
+hex(b) # функция возвращает строку соответствующую шестнадцатеричной записи числа
+```
+
+Перевод из 10-ой в N-ую систему исчисления:
+```python
+base = int(input())
+x = int(input())
+x_base = ''
+while x > 0:
+    digit = x % base
+    x_base = digit + x_base
+    x //= base
+else:
+   x_base = int(x_base)
+print(x_base)
+```
+
+### Однопроходные алгоритмы
+```mermaid
+graph TD;
+    число (x)-->число (x);
+    число (x)-->последовательность чисел [x₁, x₂, ..., xₙ];
+    последовательность чисел [x₁, x₂, ..., xₙ]-->число (x)
+```
+
+Алгоритм не требующий запоминать все числа
+```
+[x₁, x₂, ..., xₙ] ⟶ yₙ₋₁
+F(yₙ₋₁, xₙ) ⟶ yₙ
+```
+
+| Название алгоритма                 |  [ ]  |      Переход       |
+|:-----------------------------------|:-----:|:------------------:|
+| Подсчёт (n)                        |   0   |       n += 1       |
+| Сумма (S)                          |   0   |       S += x       |
+| Произведение (p)                   |   1   |       p *= x       |
+| Максимум (m)                       | None  |   m = max(m, x)    |
+| Поиск числа последовательности (f) | False | f = f or (x == xₙ) |
+`где xₙ - искомое число`
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -134,3 +229,11 @@
 [Truth table]: https://github.com/BurdichxD4r/test_tasks_and_algorithms/blob/main/algorithms/README.md#таблица-истиности
 [Disjunctive normal form]: https://github.com/BurdichxD4r/test_tasks_and_algorithms/blob/main/algorithms/README.md#дизъюнктивная-нормальная-форма
 [The Laws of truth]: https://github.com/BurdichxD4r/test_tasks_and_algorithms/blob/main/algorithms/README.md#законы-истиности
+[Leson_3]: https://github.com/BurdichxD4r/test_tasks_and_algorithms/blob/main/algorithms/README.md#системы-счисления-leson_3
+[Gornar Scheme]: https://github.com/BurdichxD4r/test_tasks_and_algorithms/blob/main/algorithms/README.md#схема-горнара
+[Notation in Python]: https://github.com/BurdichxD4r/test_tasks_and_algorithms/blob/main/algorithms/README.md#обозначения-в-python
+[Single - pass algorithms]: https://github.com/BurdichxD4r/test_tasks_and_algorithms/blob/main/algorithms/README.md#однопроходные-алгоритмы
+
+
+
+
