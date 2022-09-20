@@ -230,7 +230,7 @@ F(yₙ₋₁, xₙ) ⟶ yₙ
 [Disjunctive normal form]: https://github.com/BurdichxD4r/test_tasks_and_algorithms/blob/main/algorithms/README.md#дизъюнктивная-нормальная-форма
 [The Laws of truth]: https://github.com/BurdichxD4r/test_tasks_and_algorithms/blob/main/algorithms/README.md#законы-истиности
 [Leson_3]: https://github.com/BurdichxD4r/test_tasks_and_algorithms/blob/main/algorithms/README.md#системы-счисления-leson_3
-[Gornar Scheme]: https://github.com/BurdichxD4r/test_tasks_and_algorithms/blob/main/algorithms/README.md#схема-горнара
+[Gornar Scheme]: https://github.com/BurdichxD4r/test_tasks_and_algorithms/blob/main/algorithms/README.md#схема-горнара-для-систем-счисления
 [Notation in Python]: https://github.com/BurdichxD4r/test_tasks_and_algorithms/blob/main/algorithms/README.md#обозначения-в-python
 [Single - pass algorithms]: https://github.com/BurdichxD4r/test_tasks_and_algorithms/blob/main/algorithms/README.md#однопроходные-алгоритмы
 
