@@ -185,9 +185,9 @@ print(x_base)
 ### Однопроходные алгоритмы
 ```mermaid
 graph TD;
-    number_(x)-->number_(x);
-    number_(x)-->sequence_of_numbers_[x₁,_x₂,_...,_xₙ];
-    sequence_of_numbers_[x₁,_x₂,_...,_xₙ]-->number_(x)
+    number-->number;
+    number-->sequence_of_numbers;
+    sequence_of_numbers-->number
 ```
 
 Алгоритм не требующий запоминать все числа
